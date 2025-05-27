@@ -13,7 +13,7 @@ const Sidebar = () => {
         <Link to="/" className="flex items-center gap-2.5">
           <ShipWheelIcon className="size-9 text-primary" />
           <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary  tracking-wider">
-            Mauritanie
+            Streamify
           </span>
         </Link>
       </div>
@@ -26,7 +26,7 @@ const Sidebar = () => {
           }`}
         >
           <HomeIcon className="size-5 text-base-content opacity-70" />
-          <span>Accueil</span>
+          <span>Home</span>
         </Link>
 
         <Link
@@ -36,7 +36,7 @@ const Sidebar = () => {
           }`}
         >
           <UsersIcon className="size-5 text-base-content opacity-70" />
-          <span>Amis</span>
+          <span>Friends</span>
         </Link>
 
         <Link
@@ -62,7 +62,7 @@ const Sidebar = () => {
             <p className="font-semibold text-sm">{authUser?.fullName}</p>
             <p className="text-xs text-success flex items-center gap-1">
               <span className="size-2 rounded-full bg-success inline-block" />
-              En ligne
+              Online
             </p>
           </div>
         </div>

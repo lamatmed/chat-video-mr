@@ -26,7 +26,7 @@ const Sidebar = () => {
           }`}
         >
           <HomeIcon className="size-5 text-base-content opacity-70" />
-          <span>Accueil</span>
+          <span>Home</span>
         </Link>
 
         <Link
@@ -36,7 +36,7 @@ const Sidebar = () => {
           }`}
         >
           <UsersIcon className="size-5 text-base-content opacity-70" />
-          <span>Amis</span>
+          <span>Ans</span>
         </Link>
 
         <Link

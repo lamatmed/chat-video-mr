@@ -40,7 +40,7 @@ const CallPage = () => {
       if (!tokenData.token || !authUser || !callId) return;
 
       try {
-        console.log("Initializing Stream video client...");
+        console.log("Initialisation du client vidéo Stream...");
 
         const user = {
           id: authUser._id,
@@ -58,13 +58,13 @@ const CallPage = () => {
 
         await callInstance.join({ create: true });
 
-        console.log("Joined call successfully");
+        console.log("Appel rejoint avec succès");
 
         setClient(videoClient);
         setCall(callInstance);
       } catch (error) {
-        console.error("Error joining call:", error);
-        toast.error("Could not join the call. Please try again.");
+        console.error("Erreur lors de la connexion à l'appel:", error);
+        toast.error("Impossible de rejoindre l'appel. Veuillez réessayer.");
       } finally {
         setIsConnecting(false);
       }
@@ -86,7 +86,7 @@ const CallPage = () => {
           </StreamVideo>
         ) : (
           <div className="flex items-center justify-center h-full">
-            <p>Could not initialize call. Please refresh or try again later.</p>
+            <p>Impossible d'initialiser l'appel. Veuillez actualiser ou réessayer plus tard.</p>
           </div>
         )}
       </div>

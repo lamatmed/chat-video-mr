@@ -8,7 +8,7 @@ function NoNotificationsFound() {
       </div>
       <h3 className="text-lg font-semibold mb-2">Aucune notification pour le moment</h3>
       <p className="text-base-content opacity-70 max-w-md">
-        Lorsque vous recevez des demandes d'amis ou des messages, ils apparaîtront ici.
+        When you receive friend requests or messages, they'll appear here.
       </p>
     </div>
   );

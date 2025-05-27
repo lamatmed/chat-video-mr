@@ -37,7 +37,7 @@ const NotificationsPage = () => {
               <section className="space-y-4">
                 <h2 className="text-xl font-semibold flex items-center gap-2">
                   <UserCheckIcon className="h-5 w-5 text-primary" />
-                  Friend Requests
+                  Demandes d'amis
                   <span className="badge badge-primary ml-2">{incomingRequests.length}</span>
                 </h2>
 
@@ -57,10 +57,10 @@ const NotificationsPage = () => {
                               <h3 className="font-semibold">{request.sender.fullName}</h3>
                               <div className="flex flex-wrap gap-1.5 mt-1">
                                 <span className="badge badge-secondary badge-sm">
-                                  Native: {request.sender.nativeLanguage}
+                                  Langue maternelle: {request.sender.nativeLanguage}
                                 </span>
                                 <span className="badge badge-outline badge-sm">
-                                  Learning: {request.sender.learningLanguage}
+                                  Apprentissage: {request.sender.learningLanguage}
                                 </span>
                               </div>
                             </div>
@@ -71,7 +71,7 @@ const NotificationsPage = () => {
                             onClick={() => acceptRequestMutation(request._id)}
                             disabled={isPending}
                           >
-                            Accept
+                            Accepter
                           </button>
                         </div>
                       </div>
@@ -86,7 +86,7 @@ const NotificationsPage = () => {
               <section className="space-y-4">
                 <h2 className="text-xl font-semibold flex items-center gap-2">
                   <BellIcon className="h-5 w-5 text-success" />
-                  New Connections
+                  Nouvelles Connexions
                 </h2>
 
                 <div className="space-y-3">
@@ -103,16 +103,16 @@ const NotificationsPage = () => {
                           <div className="flex-1">
                             <h3 className="font-semibold">{notification.recipient.fullName}</h3>
                             <p className="text-sm my-1">
-                              {notification.recipient.fullName} accepted your friend request
+                              {notification.recipient.fullName} a accepté votre demande d'ami
                             </p>
                             <p className="text-xs flex items-center opacity-70">
                               <ClockIcon className="h-3 w-3 mr-1" />
-                              Recently
+                              Récemment
                             </p>
                           </div>
                           <div className="badge badge-success">
                             <MessageSquareIcon className="h-3 w-3 mr-1" />
-                            New Friend
+                            Nouvel Ami
                           </div>
                         </div>
                       </div>

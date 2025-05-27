@@ -22,7 +22,7 @@ const OnboardingPage = () => {
   const { mutate: onboardingMutation, isPending } = useMutation({
     mutationFn: completeOnboarding,
     onSuccess: () => {
-      toast.success("Profile onboarded successfully");
+      toast.success("Profil configuré avec succès");
       queryClient.invalidateQueries({ queryKey: ["authUser"] });
     },
 
@@ -42,14 +42,14 @@ const OnboardingPage = () => {
     const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
 
     setFormState({ ...formState, profilePic: randomAvatar });
-    toast.success("Random profile picture generated!");
+    toast.success("Photo de profil aléatoire générée !");
   };
 
   return (
     <div className="min-h-screen bg-base-100 flex items-center justify-center p-4">
       <div className="card bg-base-200 w-full max-w-3xl shadow-xl">
         <div className="card-body p-6 sm:p-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">Complete Your Profile</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">Complétez Votre Profil</h1>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* PROFILE PIC CONTAINER */}
@@ -59,7 +59,7 @@ const OnboardingPage = () => {
                 {formState.profilePic ? (
                   <img
                     src={formState.profilePic}
-                    alt="Profile Preview"
+                    alt="Aperçu du profil"
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -73,7 +73,7 @@ const OnboardingPage = () => {
               <div className="flex items-center gap-2">
                 <button type="button" onClick={handleRandomAvatar} className="btn btn-accent">
                   <ShuffleIcon className="size-4 mr-2" />
-                  Generate Random Avatar
+                  Générer un Avatar Aléatoire
                 </button>
               </div>
             </div>
@@ -81,7 +81,7 @@ const OnboardingPage = () => {
             {/* FULL NAME */}
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Full Name</span>
+                <span className="label-text">Nom Complet</span>
               </label>
               <input
                 type="text"
@@ -89,7 +89,7 @@ const OnboardingPage = () => {
                 value={formState.fullName}
                 onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
                 className="input input-bordered w-full"
-                placeholder="Your full name"
+                placeholder="Votre nom complet"
               />
             </div>
 
@@ -103,7 +103,7 @@ const OnboardingPage = () => {
                 value={formState.bio}
                 onChange={(e) => setFormState({ ...formState, bio: e.target.value })}
                 className="textarea textarea-bordered h-24"
-                placeholder="Tell others about yourself and your language learning goals"
+                placeholder="Parlez de vous et de vos objectifs d'apprentissage des langues"
               />
             </div>
 
@@ -112,7 +112,7 @@ const OnboardingPage = () => {
               {/* NATIVE LANGUAGE */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Native Language</span>
+                  <span className="label-text">Langue Maternelle</span>
                 </label>
                 <select
                   name="nativeLanguage"
@@ -120,7 +120,7 @@ const OnboardingPage = () => {
                   onChange={(e) => setFormState({ ...formState, nativeLanguage: e.target.value })}
                   className="select select-bordered w-full"
                 >
-                  <option value="">Select your native language</option>
+                  <option value="">Sélectionnez votre langue maternelle</option>
                   {LANGUAGES.map((lang) => (
                     <option key={`native-${lang}`} value={lang.toLowerCase()}>
                       {lang}
@@ -132,7 +132,7 @@ const OnboardingPage = () => {
               {/* LEARNING LANGUAGE */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Learning Language</span>
+                  <span className="label-text">Langue d'Apprentissage</span>
                 </label>
                 <select
                   name="learningLanguage"
@@ -140,7 +140,7 @@ const OnboardingPage = () => {
                   onChange={(e) => setFormState({ ...formState, learningLanguage: e.target.value })}
                   className="select select-bordered w-full"
                 >
-                  <option value="">Select language you're learning</option>
+                  <option value="">Sélectionnez la langue que vous apprenez</option>
                   {LANGUAGES.map((lang) => (
                     <option key={`learning-${lang}`} value={lang.toLowerCase()}>
                       {lang}
@@ -153,7 +153,7 @@ const OnboardingPage = () => {
             {/* LOCATION */}
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Location</span>
+                <span className="label-text">Localisation</span>
               </label>
               <div className="relative">
                 <MapPinIcon className="absolute top-1/2 transform -translate-y-1/2 left-3 size-5 text-base-content opacity-70" />
@@ -163,23 +163,22 @@ const OnboardingPage = () => {
                   value={formState.location}
                   onChange={(e) => setFormState({ ...formState, location: e.target.value })}
                   className="input input-bordered w-full pl-10"
-                  placeholder="City, Country"
+                  placeholder="Ville, Pays"
                 />
               </div>
             </div>
 
             {/* SUBMIT BUTTON */}
-
             <button className="btn btn-primary w-full" disabled={isPending} type="submit">
               {!isPending ? (
                 <>
                   <ShipWheelIcon className="size-5 mr-2" />
-                  Complete Onboarding
+                  Terminer la Configuration
                 </>
               ) : (
                 <>
                   <LoaderIcon className="animate-spin size-5 mr-2" />
-                  Onboarding...
+                  Configuration en cours...
                 </>
               )}
             </button>

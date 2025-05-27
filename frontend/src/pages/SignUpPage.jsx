@@ -57,9 +57,9 @@ const SignUpPage = () => {
             <form onSubmit={handleSignup}>
               <div className="space-y-4">
                 <div>
-                  <h2 className="text-xl font-semibold">Create an Account</h2>
+                  <h2 className="text-xl font-semibold">Créer un Compte</h2>
                   <p className="text-sm opacity-70">
-                    Join Streamify and start your language learning adventure!
+                    Rejoignez Streamify et commencez votre aventure d'apprentissage des langues !
                   </p>
                 </div>
 
@@ -67,11 +67,11 @@ const SignUpPage = () => {
                   {/* FULLNAME */}
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Full Name</span>
+                      <span className="label-text">Nom Complet</span>
                     </label>
                     <input
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="Jean Dupont"
                       className="input input-bordered w-full"
                       value={signupData.fullName}
                       onChange={(e) => setSignupData({ ...signupData, fullName: e.target.value })}
@@ -85,7 +85,7 @@ const SignUpPage = () => {
                     </label>
                     <input
                       type="email"
-                      placeholder="john@gmail.com"
+                      placeholder="jean@gmail.com"
                       className="input input-bordered w-full"
                       value={signupData.email}
                       onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
@@ -95,7 +95,7 @@ const SignUpPage = () => {
                   {/* PASSWORD */}
                   <div className="form-control w-full">
                     <label className="label">
-                      <span className="label-text">Password</span>
+                      <span className="label-text">Mot de passe</span>
                     </label>
                     <input
                       type="password"
@@ -106,7 +106,7 @@ const SignUpPage = () => {
                       required
                     />
                     <p className="text-xs opacity-70 mt-1">
-                      Password must be at least 6 characters long
+                      Le mot de passe doit contenir au moins 6 caractères
                     </p>
                   </div>
 
@@ -114,9 +114,9 @@ const SignUpPage = () => {
                     <label className="label cursor-pointer justify-start gap-2">
                       <input type="checkbox" className="checkbox checkbox-sm" required />
                       <span className="text-xs leading-tight">
-                        I agree to the{" "}
-                        <span className="text-primary hover:underline">terms of service</span> and{" "}
-                        <span className="text-primary hover:underline">privacy policy</span>
+                        J'accepte les{" "}
+                        <span className="text-primary hover:underline">conditions d'utilisation</span> et la{" "}
+                        <span className="text-primary hover:underline">politique de confidentialité</span>
                       </span>
                     </label>
                   </div>
@@ -126,18 +126,18 @@ const SignUpPage = () => {
                   {isPending ? (
                     <>
                       <span className="loading loading-spinner loading-xs"></span>
-                      Loading...
+                      Chargement...
                     </>
                   ) : (
-                    "Create Account"
+                    "Créer un Compte"
                   )}
                 </button>
 
                 <div className="text-center mt-4">
                   <p className="text-sm">
-                    Already have an account?{" "}
+                    Vous avez déjà un compte ?{" "}
                     <Link to="/login" className="text-primary hover:underline">
-                      Sign in
+                      Se connecter
                     </Link>
                   </p>
                 </div>
@@ -155,9 +155,9 @@ const SignUpPage = () => {
             </div>
 
             <div className="text-center space-y-3 mt-6">
-              <h2 className="text-xl font-semibold">Connect with language partners worldwide</h2>
+              <h2 className="text-xl font-semibold">Connectez-vous avec des partenaires linguistiques du monde entier</h2>
               <p className="opacity-70">
-                Practice conversations, make friends, and improve your language skills together
+                Pratiquez des conversations, faites des amis et améliorez vos compétences linguistiques ensemble
               </p>
             </div>
           </div>

@@ -41,7 +41,7 @@ const ChatPage = () => {
       if (!tokenData?.token || !authUser) return;
 
       try {
-        console.log("Initializing stream chat client...");
+        console.log("Initialisation du client de chat Stream...");
 
         const client = StreamChat.getInstance(STREAM_API_KEY);
 
@@ -57,9 +57,9 @@ const ChatPage = () => {
         //
         const channelId = [authUser._id, targetUserId].sort().join("-");
 
-        // you and me
-        // if i start the chat => channelId: [myId, yourId]
-        // if you start the chat => channelId: [yourId, myId]  => [myId,yourId]
+        // vous et moi
+        // si je commence le chat => channelId: [monId, votreId]
+        // si vous commencez le chat => channelId: [votreId, monId]  => [monId,votreId]
 
         const currChannel = client.channel("messaging", channelId, {
           members: [authUser._id, targetUserId],
@@ -70,8 +70,8 @@ const ChatPage = () => {
         setChatClient(client);
         setChannel(currChannel);
       } catch (error) {
-        console.error("Error initializing chat:", error);
-        toast.error("Could not connect to chat. Please try again.");
+        console.error("Erreur lors de l'initialisation du chat:", error);
+        toast.error("Impossible de se connecter au chat. Veuillez réessayer.");
       } finally {
         setLoading(false);
       }
@@ -85,10 +85,10 @@ const ChatPage = () => {
       const callUrl = `${window.location.origin}/call/${channel.id}`;
 
       channel.sendMessage({
-        text: `I've started a video call. Join me here: ${callUrl}`,
+        text: `J'ai démarré un appel vidéo. Rejoignez-moi ici : ${callUrl}`,
       });
 
-      toast.success("Video call link sent successfully!");
+      toast.success("Lien d'appel vidéo envoyé avec succès !");
     }
   };
 

@@ -26,7 +26,7 @@ const Sidebar = () => {
           }`}
         >
           <HomeIcon className="size-5 text-base-content opacity-70" />
-          <span>Accueil</span>
+          <span>Accue</span>
         </Link>
 
         <Link
