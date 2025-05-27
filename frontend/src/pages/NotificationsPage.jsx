@@ -1,10 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { acceptFriendRequest, getFriendRequests } from "../lib/api";
-import { BellIcon, ClockIcon, MessageSquareIcon, UserCheckIcon } from "lucide-react";
+import { ArrowLeftIcon, BellIcon, ClockIcon, MessageSquareIcon, UserCheckIcon } from "lucide-react";
+import { useNavigate } from "react-router";
 import NoNotificationsFound from "../components/NoNotificationsFound";
 
 const NotificationsPage = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const { data: friendRequests, isLoading } = useQuery({
     queryKey: ["friendRequests"],
@@ -25,6 +27,14 @@ const NotificationsPage = () => {
   return (
     <div className="p-4 sm:p-6 lg:p-8">
       <div className="container mx-auto max-w-4xl space-y-8">
+        {/* Mobile back button */}
+        <div className="lg:hidden mb-4">
+          <button onClick={() => navigate(-1)} className="btn btn-ghost btn-sm">
+            <ArrowLeftIcon className="size-4 mr-2" />
+            Retour
+          </button>
+        </div>
+
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-6">Notifications</h1>
 
         {isLoading ? (
@@ -48,18 +58,18 @@ const NotificationsPage = () => {
                       className="card bg-base-200 shadow-sm hover:shadow-md transition-shadow"
                     >
                       <div className="card-body p-4">
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                           <div className="flex items-center gap-3">
-                            <div className="avatar w-14 h-14 rounded-full bg-base-300">
+                            <div className="avatar w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-base-300">
                               <img src={request.sender.profilePic} alt={request.sender.fullName} />
                             </div>
                             <div>
-                              <h3 className="font-semibold">{request.sender.fullName}</h3>
+                              <h3 className="font-semibold text-sm sm:text-base">{request.sender.fullName}</h3>
                               <div className="flex flex-wrap gap-1.5 mt-1">
-                                <span className="badge badge-secondary badge-sm">
+                                <span className="badge badge-secondary badge-sm text-xs">
                                   Langue maternelle: {request.sender.nativeLanguage}
                                 </span>
-                                <span className="badge badge-outline badge-sm">
+                                <span className="badge badge-outline badge-sm text-xs">
                                   Apprentissage: {request.sender.learningLanguage}
                                 </span>
                               </div>
@@ -67,7 +77,7 @@ const NotificationsPage = () => {
                           </div>
 
                           <button
-                            className="btn btn-primary btn-sm"
+                            className="btn btn-primary btn-sm w-full sm:w-auto"
                             onClick={() => acceptRequestMutation(request._id)}
                             disabled={isPending}
                           >
@@ -101,8 +111,8 @@ const NotificationsPage = () => {
                             />
                           </div>
                           <div className="flex-1">
-                            <h3 className="font-semibold">{notification.recipient.fullName}</h3>
-                            <p className="text-sm my-1">
+                            <h3 className="font-semibold text-sm sm:text-base">{notification.recipient.fullName}</h3>
+                            <p className="text-xs sm:text-sm my-1">
                               {notification.recipient.fullName} a accepté votre demande d'ami
                             </p>
                             <p className="text-xs flex items-center opacity-70">
@@ -110,7 +120,7 @@ const NotificationsPage = () => {
                               Récemment
                             </p>
                           </div>
-                          <div className="badge badge-success">
+                          <div className="badge badge-success text-xs">
                             <MessageSquareIcon className="h-3 w-3 mr-1" />
                             Nouvel Ami
                           </div>
@@ -131,4 +141,5 @@ const NotificationsPage = () => {
     </div>
   );
 };
+
 export default NotificationsPage;

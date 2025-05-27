@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import useAuthUser from "../hooks/useAuthUser";
 import { useQuery } from "@tanstack/react-query";
 import { getStreamToken } from "../lib/api";
+import { ArrowLeftIcon } from "lucide-react";
 
 import {
   StreamVideo,
@@ -23,6 +24,7 @@ const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY;
 
 const CallPage = () => {
   const { id: callId } = useParams();
+  const navigate = useNavigate();
   const [client, setClient] = useState(null);
   const [call, setCall] = useState(null);
   const [isConnecting, setIsConnecting] = useState(true);
@@ -76,19 +78,31 @@ const CallPage = () => {
   if (isLoading || isConnecting) return <PageLoader />;
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <div className="relative">
-        {client && call ? (
-          <StreamVideo client={client}>
-            <StreamCall call={call}>
-              <CallContent />
-            </StreamCall>
-          </StreamVideo>
-        ) : (
-          <div className="flex items-center justify-center h-full">
-            <p>Impossible d'initialiser l'appel. Veuillez actualiser ou réessayer plus tard.</p>
-          </div>
-        )}
+    <div className="h-screen flex flex-col">
+      {/* Mobile back button */}
+      <div className="lg:hidden p-4 border-b">
+        <button onClick={() => navigate(-1)} className="btn btn-ghost btn-sm">
+          <ArrowLeftIcon className="size-4 mr-2" />
+          Retour
+        </button>
+      </div>
+
+      <div className="flex-1 flex flex-col items-center justify-center p-4">
+        <div className="relative w-full max-w-4xl">
+          {client && call ? (
+            <StreamVideo client={client}>
+              <StreamCall call={call}>
+                <CallContent />
+              </StreamCall>
+            </StreamVideo>
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <p className="text-center text-sm sm:text-base">
+                Impossible d'initialiser l'appel. Veuillez actualiser ou réessayer plus tard.
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -97,7 +111,6 @@ const CallPage = () => {
 const CallContent = () => {
   const { useCallCallingState } = useCallStateHooks();
   const callingState = useCallCallingState();
-
   const navigate = useNavigate();
 
   if (callingState === CallingState.LEFT) return navigate("/");
